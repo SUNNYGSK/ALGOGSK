@@ -1,4 +1,3 @@
-
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -69,15 +68,15 @@ def predict_signal(symbol, expiry_str):
 
 # --- UI
 st.title("📡 ALGOGSK Binary AI Signal Generator")
-
 pair = st.selectbox("Select Currency Pair", list(SYMBOLS.keys()))
 expiry = st.selectbox("Select Expiry", list(EXPIRIES.keys()))
-if st.button("Generate Signal"):
+
+if st.button("🚀 Generate Signal"):
     with st.spinner("Analyzing market..."):
         signal, result = predict_signal(SYMBOLS[pair], expiry)
         if signal is None:
             st.error(result)
         else:
-            st.success(f"**Signal: {signal}**  
+            st.success(f"""📈 **Signal: {signal}**  
 Confidence: **{result}%**  
-Expiry: {expiry}")
+Expiry: `{expiry}`""")
